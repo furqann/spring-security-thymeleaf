@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userRespository.findById(id);
 	}
 
 	@Override
@@ -42,6 +42,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void delete(int id, User user) {
 		// TODO Auto-generated method stub
+		User userInDb = userRespository.findById(id);
+		
+		if(userInDb != null)
+			userRespository.delete(user);
 		
 	}
 

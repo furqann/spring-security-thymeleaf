@@ -8,6 +8,9 @@ import com.spring.security.thymeleaf.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+	
+	User findById(int id);
+	
 	@Query("SELECT u FROM User u where u.email = :emailAddress")
 	User findByEmail(String emailAddress);
 }
