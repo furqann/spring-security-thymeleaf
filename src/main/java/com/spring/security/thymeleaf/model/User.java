@@ -53,5 +53,13 @@ public @Data class User {
 	@Column
 	@UpdateTimestamp
 	Date updatedAt;
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", fullName=" + fullName + ", username=" + username + ", password=" + password
+				+ ", email=" + email + ", active=" + active + ", role=" + role + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + "]";
+	}
+	
 	
 }
