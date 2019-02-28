@@ -29,12 +29,14 @@ public class EthicsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		//userRepository.save(new User);
-		User u = new User();
-		u.setFullName("Robert Chuwaza");
-		u.setUsername("robert");
-		u.setActive(false);
+//		User u = new User();
+//		u.setFullName("Robert Chuwaza");
+//		u.setUsername("robert");
+//		u.setEmail("robert@r.com");
+//		u.setActive(false);
 		//u.setRole(new Role());
-		//userService.save(u);
+		User u = userService.findByEmail("robert@r.com");
+		System.out.println(u.toString());
 	}
 
 }
