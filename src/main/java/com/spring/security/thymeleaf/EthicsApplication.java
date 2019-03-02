@@ -36,7 +36,7 @@ public class EthicsApplication implements CommandLineRunner {
 //		u.setActive(false);
 		//u.setRole(new Role());
 		User u = userService.findByEmail("robert@r.com");
-		System.out.println(u.toString());
+		//System.out.println(u.toString());
 	}
 
 }
