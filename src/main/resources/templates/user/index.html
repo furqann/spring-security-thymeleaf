@@ -22,9 +22,9 @@
 				<td th:text="${user.email}">john@hill.com</td>
 				<td th:text="${user.username}">john.reese</td>
 				<td>
-					<a class="btn btn-sm btn-info" th:href="@{/user/detail/${user.userId}}">Details</a>
-					<a class="btn btn-sm btn-primary" th:href="@{/user/edit/${user.userId}}">Update</a>
-					<a class="btn btn-sm btn-danger" th:href="@{/user/delete/${user.userId}}">Delete</a>
+					<a class="btn btn-sm btn-info" th:href="@{/user/detail/{userId}(userId = ${user.userId})}">Details</a>
+					<a class="btn btn-sm btn-primary" th:href="@{/user/edit/{userId}(userId = ${user.userId})}">Update</a>
+					<a class="btn btn-sm btn-danger" th:href="@{'/user/delete/' + ${user.userId}}">Delete</a>
 				</td>
 			</tr>
 		</tbody>
