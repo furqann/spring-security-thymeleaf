@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Collection<User> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return userRespository.findAll();
 	}
 
 	@Override
