@@ -24,6 +24,7 @@ public class UserController {
 		Collection<User> users = userService.findAll(); 
 		model.addAttribute("users", users);
 		
+		model.addAttribute("pageTitle", "User Management");
 		model.addAttribute("view", "user/index");
 		return "fragments/main";
 	}
