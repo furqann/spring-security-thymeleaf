@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="content">
+		<h2>Adding new user</h2>
+		<div class="row">
+			<div class="col-6">
+				<form th:action="@{/user/save}" th:object="${user}" method="post">
+					<div class="form-row">
+						<div class="col mb-3">
+							<label for="fullname">Full name</label> 
+							<input type="text" th:field="*{fullName}"
+								class="form-control is-valid" id="fullname"
+								placeholder="Full name" value="Mark" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col mb-3">
+							<label for="username">Username</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupPrepend3">@</span>
+								</div>
+								<input type="text" th:field="*{username}" class="form-control is-invalid" id="username"
+									placeholder="Username" aria-describedby="inputGroupPrepend3"
+									required>
+								<div class="invalid-feedback">Please choose a username.</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="email">Email</label> 
+							<input type="email" th:field="*{email}"
+								class="form-control is-invalid" id="email" placeholder="Email"
+								required>
+							<div class="invalid-feedback">Please provide a valid email
+								address.</div>
+						</div>
+							<div class="col-md-6">
+							<label for="roles">Role</label> 
+								<select class="custom-select is-invalid" th:field="*{role}" required>
+									<option value="">Select Role</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+								<div class="invalid-feedback">Please choose a role.</div>
+							</div>
+					</div>
+					<div class="form-group">
+						<div class="form-check">
+							<input class="form-check-input is-valid" th:field="*{active}" type="checkbox" value=""
+								id="active" required> <label class="form-check-label"
+								for="active"> Activate account </label>
+							<div class="valid-feedback"></div>
+						</div>
+					</div>
+					<button class="btn btn-primary" type="submit">Submit form</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

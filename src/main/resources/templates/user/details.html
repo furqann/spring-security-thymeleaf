@@ -6,7 +6,25 @@
 </head>
 <body>
 	<div th:fragment="content">
-	<h3 th:text="|Details of the ${id}|" ></h3>
+		<h3 th:text="|Details|" ></h3>
+		<div th:switch="${user}">
+			<div th:case="null">
+				<span class="lead">User does not exist.</span>
+			</div>
+			<div th:case="*" class="row">
+				<div class="col-6">
+						<h4 th:text="|Fullname: ${user.fullName}|"></h4>
+						<h4 th:text="|Email: ${user.email}|"></h4>
+						<h4 th:text="|Username: ${user.username}|"></h4>
+						<h4 th:text="|Role: ${user.role}|"></h4>
+						<h4 th:text="|Active: ${user.active}|"></h4>
+				</div>
+				<div class="col-6">		
+					<img th:src="@{https://cdn1.iconfinder.com/data/icons/admin-panel-white-with-multicolor-circle-backgroun/2048/Profile-512.png}" 
+				width="200px">
+				</div>		
+			</div>
+		</div>
 	</div>
 </body>
 </html>

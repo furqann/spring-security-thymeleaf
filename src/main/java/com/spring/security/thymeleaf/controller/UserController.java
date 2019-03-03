@@ -28,10 +28,18 @@ public class UserController {
 
 		return ViewUtil.generateView(model, "User Management", "user/index");
 	}
+
+	@GetMapping("/save")
+	public String save(ModelMap model, User user) {
+		return ViewUtil.generateView(model, "New User", "user/save");
+	}
 	
 	@GetMapping("/details/{id}")
 	public String details(ModelMap model, @PathVariable("id") int userId) {
-		model.addAttribute("id", userId);
+		
+		User user = userService.findById(userId);
+		model.addAttribute("user", user);
+		
 		return ViewUtil.generateView(model, "User Details", "user/details");
 	}
 	
