@@ -5,8 +5,11 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.security.thymeleaf.model.User;
@@ -32,6 +35,12 @@ public class UserController {
 	@GetMapping("/save")
 	public String save(ModelMap model, User user) {
 		return ViewUtil.generateView(model, "New User", "user/save");
+	}
+	
+	@PostMapping("/save")
+	public String save(ModelMap model, User user, BindingResult bindingResult) {
+		userService.save(user);
+		return "redirect:index";
 	}
 	
 	@GetMapping("/details/{id}")
