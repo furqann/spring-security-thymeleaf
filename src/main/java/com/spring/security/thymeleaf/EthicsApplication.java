@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.spring.security.thymeleaf.model.Role;
 import com.spring.security.thymeleaf.model.User;
 import com.spring.security.thymeleaf.repository.UserRepository;
+import com.spring.security.thymeleaf.service.*;
 import com.spring.security.thymeleaf.service.UserService;
 
 @SpringBootApplication(exclude = {
@@ -18,7 +19,7 @@ import com.spring.security.thymeleaf.service.UserService;
 public class EthicsApplication implements CommandLineRunner {
 
 	@Autowired
-	private UserService userService;
+	private RoleService roleService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(EthicsApplication.class, args);
@@ -35,8 +36,16 @@ public class EthicsApplication implements CommandLineRunner {
 //		u.setEmail("robert@r.com");
 //		u.setActive(false);
 		//u.setRole(new Role());
-		User u = userService.findByEmail("robert@r.com");
+		//User u = userService.findByEmail("robert@r.com");
 		//System.out.println(u.toString());
+//		Role r1 = new Role();
+//		r1.setName("Admin");
+//		
+//		Role r2 = new Role();
+//		r2.setName("User");
+//		
+//		roleService.save(r1);
+//		roleService.save(r2);
 	}
 
 }
