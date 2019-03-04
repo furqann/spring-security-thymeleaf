@@ -1,7 +1,7 @@
 package com.spring.security.thymeleaf.controller;
 
 import java.util.Collection;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -50,6 +50,25 @@ public class UserController {
 		model.addAttribute("user", user);
 		
 		return ViewUtil.generateView(model, "User Details", "user/details");
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String update(ModelMap model, @PathVariable("id") int id) {
+		
+		User user =  userService.findById(id);
+		model.addAttribute("user", user);
+		
+		return ViewUtil.generateView(model, "Edit", "user/edit");
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String update(ModelMap model, @PathVariable("id") int id, User user) {
+		
+		System.out.println(user.toString());
+		
+			userService.update(id, user);
+		
+		return "redirect:/user/index";
 	}
 	
 }

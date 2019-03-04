@@ -36,7 +36,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void update(int id, User user) {
 		// TODO Auto-generated method stub
-		
+		User userDb = userRespository.findById(id);
+		if(userDb != null)
+			userRespository.save(user);
 	}
 
 	@Override
