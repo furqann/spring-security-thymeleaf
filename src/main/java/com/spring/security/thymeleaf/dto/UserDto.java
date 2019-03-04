@@ -1,10 +1,13 @@
 package com.spring.security.thymeleaf.dto;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.spring.security.thymeleaf.model.*;
 
+import lombok.Data;
+
+@Data
 public class UserDto {
 	User user;
-	List<Role> roles;
+	Collection<Role> roles;
 }

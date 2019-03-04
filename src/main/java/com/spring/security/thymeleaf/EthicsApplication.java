@@ -21,6 +21,9 @@ public class EthicsApplication implements CommandLineRunner {
 	@Autowired
 	private RoleService roleService;
 	
+	@Autowired
+	private UserService userService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EthicsApplication.class, args);
 	}
@@ -31,11 +34,14 @@ public class EthicsApplication implements CommandLineRunner {
 	public void run(String... args) {
 		//userRepository.save(new User);
 //		User u = new User();
-//		u.setFullName("Robert Chuwaza");
-//		u.setUsername("robert");
-//		u.setEmail("robert@r.com");
-//		u.setActive(false);
-		//u.setRole(new Role());
+//		Role role = new Role();
+//		role.setRoleId(9);
+//		u.setFullName("Robert James");
+//		u.setUsername("james");
+//		u.setEmail("james@r.com");
+//		u.setActive(true);
+//		u.setRole(role);
+//		userService.save(u);
 		//User u = userService.findByEmail("robert@r.com");
 		//System.out.println(u.toString());
 //		Role r1 = new Role();
