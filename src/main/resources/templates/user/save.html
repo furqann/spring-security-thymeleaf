@@ -9,7 +9,7 @@
 		<h2>Adding new user</h2>
 		<div class="row">
 			<div class="col-6">
-				<form th:action="@{/user/save}" th:object="${user}" method="post">
+				<form th:action="@{/user/save}" th:object="${userDto}" method="post">
 					<div class="form-row">
 						<div class="col mb-3">
 							<label for="fullname">Full name</label> 
@@ -42,7 +42,7 @@
 						</div>
 							<div class="col-md-6">
 							<label for="roles">Role</label> 
-								<select class="custom-select is-invalid" th:field="*{user.role}" required>
+								<select class="custom-select is-invalid" th:field="*{user.role.roleId}" required>
 									<option value="">Select Role</option>
 									<option th:each="role : *{roles}" th:value="${role.roleId}" th:text="${role.name}"></option>
 								</select>

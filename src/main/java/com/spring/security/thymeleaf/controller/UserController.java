@@ -49,15 +49,15 @@ public class UserController {
 			System.out.println( role.getName() );
 		}
 
-		model.addAttribute("user", user);
+		model.addAttribute("userDto", user);
 		return ViewUtil.generateView(model, "New User", "user/save");
 	}
 
 	@PostMapping("/save")
-	public String save(ModelMap model, User user, BindingResult bindingResult) {
+	public String save(ModelMap model, UserDto userDto, BindingResult bindingResult) {
 		Role role = new Role();
-		
-		userService.save(user);
+		System.out.println(userDto.getUser().toString());
+		userService.save(userDto.getUser());
 		return "redirect:index";
 	}
 

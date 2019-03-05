@@ -30,7 +30,7 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int roleId;
+	Integer roleId;
 	
 	@Column
 	String name;
