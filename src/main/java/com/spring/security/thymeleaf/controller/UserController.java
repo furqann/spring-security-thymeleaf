@@ -65,19 +65,21 @@ public class UserController {
 
 	@GetMapping("/edit/{id}")
 	public String update(ModelMap model, @PathVariable("id") int id) {
-
-		User user = userService.findById(id);
-		model.addAttribute("user", user);
+		
+		UserDto user = new UserDto();
+		user.setUser(userService.findById(id));
+		user.setRoles(roleService.findAll());
+		
+		model.addAttribute("userForm", user);
 
 		return ViewUtil.generateView(model, "Edit", "user/edit");
 	}
 
 	@PostMapping("/edit/{id}")
-	public String update(ModelMap model, @PathVariable("id") int id, User user) {
-
-		System.out.println(user.toString());
-
-		userService.update(id, user);
+	public String update(ModelMap model, @PathVariable("id") int id, UserDto user) {
+		
+		User _user = user.getUser();
+		userService.update(id, _user);
 
 		return "redirect:/user/index";
 	}

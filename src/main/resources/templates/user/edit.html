@@ -9,12 +9,12 @@
 		<h2>Adding new user</h2>
 		<div class="row">
 			<div class="col-6">
-				<form th:action="@{/user/edit/{id}(id = ${user.userId})}" th:object="${user}" method="post">
-				<input type="hidden" th:field="*{userId}"/>
+				<form th:action="@{/user/edit/{id}(id = ${userForm.user.userId})}" th:object="${userForm}" method="post">
+				<input type="hidden" th:field="*{user.userId}"/>
 					<div class="form-row">
 						<div class="col mb-3">
 							<label for="fullname">Full name</label> 
-							<input type="text" th:field="*{fullName}"
+							<input type="text" th:field="*{user.fullName}"
 								class="form-control is-valid" id="fullname"
 								placeholder="Full name" required>
 							<div class="valid-feedback">Looks good!</div>
@@ -25,7 +25,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="inputGroupPrepend3">@</span>
 								</div>
-								<input type="text" th:field="*{username}" class="form-control is-invalid" id="username"
+								<input type="text" th:field="*{user.username}" class="form-control is-invalid" id="username"
 									placeholder="Username" aria-describedby="inputGroupPrepend3"
 									required>
 								<div class="invalid-feedback">Please choose a username.</div>
@@ -35,7 +35,7 @@
 					<div class="form-row">
 						<div class="col-md-6 mb-3">
 							<label for="email">Email</label> 
-							<input type="email" th:field="*{email}"
+							<input type="email" th:field="*{user.email}"
 								class="form-control is-invalid" id="email" placeholder="Email"
 								required>
 							<div class="invalid-feedback">Please provide a valid email
@@ -43,18 +43,16 @@
 						</div>
 							<div class="col-md-6">
 							<label for="roles">Role</label> 
-								<select class="custom-select is-invalid" th:field="*{role}" required>
+								<select class="custom-select is-invalid" th:field="*{user.role.roleId}" required>
 									<option value="">Select Role</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+									<option th:each="role : *{roles}" th:value="${role.roleId}" th:text="${role.name}"></option>
 								</select>
 								<div class="invalid-feedback">Please choose a role.</div>
 							</div>
 					</div>
 					<div class="form-group">
 						<div class="form-check">
-							<input class="form-check-input is-valid" th:field="*{active}" type="checkbox" value=""
+							<input class="form-check-input is-valid" th:field="*{user.active}" type="checkbox"
 								id="active"> <label class="form-check-label"
 								for="active"> Activate account </label>
 							<div class="valid-feedback"></div>
