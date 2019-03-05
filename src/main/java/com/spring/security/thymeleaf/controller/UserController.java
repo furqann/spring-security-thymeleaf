@@ -40,24 +40,17 @@ public class UserController {
 	}
 
 	@GetMapping("/save")
-	public String save(ModelMap model) {
-		UserDto user = new UserDto();
-		user.setRoles(roleService.findAll());
+	public String save(ModelMap model, UserDto userForm) {
 
-		Collection<Role> roles = user.getRoles();
-		for (Role role : roles) {
-			System.out.println( role.getName() );
-		}
-
-		model.addAttribute("userDto", user);
+		userForm.setRoles(roleService.findAll());
+		model.addAttribute("userForm", userForm);
+		
 		return ViewUtil.generateView(model, "New User", "user/save");
 	}
 
 	@PostMapping("/save")
-	public String save(ModelMap model, UserDto userDto, BindingResult bindingResult) {
-		Role role = new Role();
-		System.out.println(userDto.getUser().toString());
-		userService.save(userDto.getUser());
+	public String save(ModelMap model, UserDto userForm, BindingResult bindingResult) {
+		userService.save(userForm.getUser());
 		return "redirect:index";
 	}
 
