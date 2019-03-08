@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.security.thymeleaf.model.Role;
 import com.spring.security.thymeleaf.service.RoleService;
 import com.spring.security.thymeleaf.util.ViewUtil;
 
@@ -24,7 +25,10 @@ public class RoleController {
 	}
 	
 	//GET Add
-	
+	@GetMapping("/save")
+	public String save(ModelMap model, Role roleForm) {
+		return ViewUtil.generateView(model, "Add", "role/roleform");
+	}
 	//POST Add
 	
 	//GET Edit
