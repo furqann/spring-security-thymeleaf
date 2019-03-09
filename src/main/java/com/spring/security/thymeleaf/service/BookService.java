@@ -5,9 +5,10 @@ import java.util.Collection;
 import com.spring.security.thymeleaf.model.Book;
 
 public interface BookService {
-	Book findByName();
+	Book findByName(String name);
+	Book findById(long id);
 	Collection<Book> findAll();
 	void save(Book book);
-	void update(int id, Book book);
-	void delete(int id);
+	void update(long id, Book book);
+	void delete(long id);
 }

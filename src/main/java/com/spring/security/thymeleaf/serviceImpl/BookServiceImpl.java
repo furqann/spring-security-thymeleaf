@@ -1,6 +1,7 @@
 package com.spring.security.thymeleaf.serviceImpl;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class BookServiceImpl implements BookService{
 	BookRepository bookRepository;
 	
 	@Override
-	public Book findByName() {
+	public Book findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -24,7 +25,7 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public Collection<Book> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return bookRepository.findAll();
 	}
 
 	@Override
@@ -34,15 +35,22 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public void update(int id, Book book) {
+	public Book findById(long id) {
+		// TODO Auto-generated method stub
+		Book book =  bookRepository.findById(id); 
+		return book;
+	}
+
+	@Override
+	public void update(long id, Book book) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
-		
+		bookRepository.deleteById(id);
 	}
 
 }
