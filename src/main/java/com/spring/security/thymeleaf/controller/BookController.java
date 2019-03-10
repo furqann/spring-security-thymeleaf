@@ -18,6 +18,7 @@ public class BookController {
 	
 	@GetMapping(value = {"/","/index","**"})
 	public String index(ModelMap model) {
+		model.addAttribute("books", bookService.findAll());
 		return ViewUtil.generateView(model, "Book Rack", "book/index");
 	}
 }
