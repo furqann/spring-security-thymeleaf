@@ -29,19 +29,20 @@ public class BookController {
 	}
 	
 	@GetMapping("/add")
-	public String save(ModelMap model, Book book) {
-		//model.addAttribute("bookForm", bookForm);
+	public String save(ModelMap model, Book bookForm) {
+		model.addAttribute("bookForm", bookForm);
 		return ViewUtil.generateView(model,"Add Book", "book/save");
 	}
 	
 	@PostMapping("/add")
-	public String save(ModelMap model, @Valid Book book, BindingResult result) {
+	public String save(ModelMap model, @Valid @ModelAttribute("bookForm") Book bookForm, BindingResult result) {
 		
 		if(result.hasErrors()) {
+			model.addAttribute("bookForm", bookForm);
 			return ViewUtil.generateView(model,"Add Book", "book/save");
 		}
 		
-		bookService.save(book);
+		bookService.save(bookForm);
 		return "redirect:index";
 	}
 }
