@@ -1,10 +1,13 @@
 package com.spring.security.thymeleaf.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,14 +29,19 @@ public class BookController {
 	}
 	
 	@GetMapping("/add")
-	public String save(ModelMap model, Book bookForm) {
-		model.addAttribute("bookForm", bookForm);
+	public String save(ModelMap model, Book book) {
+		//model.addAttribute("bookForm", bookForm);
 		return ViewUtil.generateView(model,"Add Book", "book/save");
 	}
 	
 	@PostMapping("/add")
-	public String save(ModelMap model, Book bookForm, BindingResult result) {
-		bookService.save(bookForm);
+	public String save(ModelMap model, @Valid Book book, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return ViewUtil.generateView(model,"Add Book", "book/save");
+		}
+		
+		bookService.save(book);
 		return "redirect:index";
 	}
 }
