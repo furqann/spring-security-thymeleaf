@@ -6,10 +6,29 @@
 </head>
 <body>
 	<div th:fragment="content">
+		<h3>
+			<span class="badge badge-success">Add Book</span>
+		</h3>
 		<form th:action="@{/book/add}" th:object="${bookForm}" method="post">
-			<input type="text" th:field="*{name}" />
-			<input type="text" th:field="*{isbn}" />
-			<input type="submit" />
+		<div class="form-row">
+			<div class="col-3 mb-3">
+				<label for="fullname">Book Title</label> 
+				<input type="text" th:field="*{name}"
+								class="form-control is-valid" id="fullname"
+								placeholder="Full name" required>
+				<div class="valid-feedback">Looks good!</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="col-3 mb-3">
+				<label for="fullname">ISBN</label> 
+				<input type="text" th:field="*{isbn}"
+								class="form-control is-valid" id="fullname"
+								placeholder="Full name" required>
+				<div class="valid-feedback">Looks good!</div>
+			</div>
+		</div>
+		<input class="btn btn-sm btn-primary" type="submit" />
 		</form>
 	</div>
 </body>
