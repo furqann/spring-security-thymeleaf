@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.security.thymeleaf.model.Book;
 import com.spring.security.thymeleaf.service.BookService;
 import com.spring.security.thymeleaf.util.ViewUtil;
 
@@ -20,5 +21,11 @@ public class BookController {
 	public String index(ModelMap model) {
 		model.addAttribute("books", bookService.findAll());
 		return ViewUtil.generateView(model, "Book Rack", "book/index");
+	}
+	
+	@GetMapping("/add")
+	public String save(ModelMap model, Book bookForm) {
+		bookService.save(bookForm);
+		return "redirect:index";
 	}
 }
