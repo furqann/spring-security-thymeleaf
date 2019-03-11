@@ -24,4 +24,15 @@ public class ViewUtil {
 		model.addAttribute("view", view);
 		return MAIN_VIEW;
 	}
+	
+	/**
+	 * @param pageTitle Title you want to display on browser tab.
+	 * @param view Location of the view e.g view/user/index
+	 */
+	public static String generateView(String pageTitle, String view) {
+		ModelMap model = new ModelMap();
+		model.addAttribute("pageTitle", pageTitle);
+		model.addAttribute("view", view);
+		return MAIN_VIEW;
+	}
 }
