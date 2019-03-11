@@ -7,8 +7,8 @@
 <body>
 	<div th:fragment="content">
 		<form th:action="@{/book/add}" th:object="${bookForm}" method="post">
-			<input type="text" th:field="${name}" />
-			<input type="text" th:field="${isbn}" />
+			<input type="text" th:field="*{name}" />
+			<input type="text" th:field="*{isbn}" />
 			<input type="submit" />
 		</form>
 	</div>
