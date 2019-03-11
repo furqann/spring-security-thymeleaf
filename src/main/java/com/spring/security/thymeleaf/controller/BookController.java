@@ -24,6 +24,11 @@ public class BookController {
 		return ViewUtil.generateView(model, "Book Rack", "book/index");
 	}
 	
+	@GetMapping("/add")
+	public String save(Book bookForm) {
+		return ViewUtil.generateView("Add Book", "book/save");
+	}
+	
 	@PostMapping("/add")
 	public String save(ModelMap model, Book bookForm) {
 		bookService.save(bookForm);
