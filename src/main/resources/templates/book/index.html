@@ -26,7 +26,7 @@
 						<td>
 							<a class="btn btn-sm btn-info" th:href="@{/}">Details</a>
 							<a class="btn btn-sm btn-primary" th:href="@{/}">Edit</a>
-							<a class="btn btn-sm btn-danger" th:href="@{/}">Delete</a>
+							<a class="btn btn-sm btn-danger" th:href="@{/book/delete/{id}(id = ${book.bookId})}">Delete</a>
 						</td>
 					</tr>
 				</tr>

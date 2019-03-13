@@ -42,14 +42,13 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public void update(long id, Book book) {
+	public void update(Long id, Book book) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(long id) {
-		// TODO Auto-generated method stub
+	public void delete(Long id) {
 		bookRepository.deleteById(id);
 	}
 
