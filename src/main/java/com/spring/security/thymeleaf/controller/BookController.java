@@ -56,7 +56,6 @@ public class BookController {
 		catch(NumberFormatException ex) {
 			System.out.println(ex);
 		}
-//		Book book = bookService.findById(id);
 		model.addAttribute("book", book);
 		return ViewUtil.generateView(model, "Book Detail", "book/details");
 	}
@@ -70,5 +69,18 @@ public class BookController {
 			System.out.println(ex);
 		}
 		return "redirect:/book/index";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(ModelMap model, @PathVariable("id") long id) {
+		model.addAttribute("book", bookService.findById(id));
+		return ViewUtil.generateView(model, "Edit Book", "book/edit");
+	}
+	
+	@GetMapping("/edit")
+	public String edit(ModelMap model, @ModelAttribute("book") Book book) {
+		//TODO Add Error handling 
+		bookService.save(book);
+		return ViewUtil.generateView(model, "Edit Book", "book/edit");
 	}
 }
