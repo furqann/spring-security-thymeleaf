@@ -6,7 +6,16 @@
 </head>
 <body>
 	<div th:fragment="content">
-	
+		<h3>Book Detail</h3>
+		<div th:switch="${book}">
+			<div th:case="null"><strong>Oh Snap!</strong> No book found.</div>
+			<div th:case="*">
+				<ul>
+					<li th:text="|Name: ${book.name}|"></li>
+					<li th:text="|Isbn: ${book.isbn}|"></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
