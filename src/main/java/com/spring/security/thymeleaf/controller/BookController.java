@@ -47,6 +47,13 @@ public class BookController {
 		return "redirect:index";
 	}
 	
+	@GetMapping("/details/{id}")
+	public String details(ModelMap model,@PathVariable Long id) {
+		Book book = bookService.findById(id);
+		model.addAttribute("book", book);
+		return ViewUtil.generateView(model, "Book Detail", "book/details");
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		bookService.delete(id);
