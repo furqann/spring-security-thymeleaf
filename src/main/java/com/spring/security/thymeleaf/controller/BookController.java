@@ -23,7 +23,7 @@ public class BookController {
 	@Autowired
 	BookService bookService;
 	
-	@GetMapping(value = {"/","/index","**"})
+	@GetMapping(value = {"/","/index"})
 	public String index(ModelMap model) {
 		model.addAttribute("books", bookService.findAll());
 		return ViewUtil.generateView(model, "Book Rack", "book/index");
@@ -48,15 +48,27 @@ public class BookController {
 	}
 	
 	@GetMapping("/details/{id}")
-	public String details(ModelMap model,@PathVariable Long id) {
-		Book book = bookService.findById(id);
+	public String details(ModelMap model,@PathVariable("id") String id) {
+		Book book = null;
+		try {
+			book = bookService.findById(Long.parseLong(id));
+		}
+		catch(NumberFormatException ex) {
+			System.out.println(ex);
+		}
+//		Book book = bookService.findById(id);
 		model.addAttribute("book", book);
 		return ViewUtil.generateView(model, "Book Detail", "book/details");
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Long id) {
-		bookService.delete(id);
+	public String delete(@PathVariable String id) {
+		try {
+			bookService.delete(Long.parseLong(id));
+		}
+		catch(NumberFormatException ex) {
+			System.out.println(ex);
+		}
 		return "redirect:/book/index";
 	}
 }
