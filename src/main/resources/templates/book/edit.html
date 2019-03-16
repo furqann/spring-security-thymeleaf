@@ -6,16 +6,14 @@
 </head>
 <body>
 	<div th:fragment="content">
-	<h3>
-			<span class="badge badge-success">Add Book</span>
-		</h3>
-		<form th:action="@{/book/add}" th:object="${bookForm}" method="post">
-		<input type="hidden" th:value="*{bookForm.bookId}"/>
+		<h3>Edit book</h3>
+		<form th:action="@{/book/edit}" th:object="${bookForm}" method="post">
+		<input type="hidden" th:field="*{bookId}"/>
 		<div class="form-row">
 			<div class="col-3 mb-3">
 				<label for="fullname">Book Title</label> 
 				<input type="text" th:field="*{name}"
-								class="form-control is-valid" id="fullname"
+								class="form-control is-valid"
 								placeholder="Book Title">
 				<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="valid-feedback">Test</div>
 			</div>
@@ -24,7 +22,7 @@
 			<div class="col-3 mb-3">
 				<label for="fullname">ISBN</label> 
 				<input type="text" th:field="*{isbn}"
-								class="form-control is-valid" id="fullname"
+								class="form-control is-valid"
 								placeholder="Enter ISBN xxx-xxx-xxx">
 				<div th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" class="valid-feedback">Test</div>
 			</div>

@@ -73,14 +73,21 @@ public class BookController {
 	
 	@GetMapping("/edit/{id}")
 	public String edit(ModelMap model, @PathVariable("id") long id) {
-		model.addAttribute("book", bookService.findById(id));
+		Book bookInDb = bookService.findById(id);
+		System.out.println(bookInDb.toString());
+		model.addAttribute("bookForm", bookInDb);
 		return ViewUtil.generateView(model, "Edit Book", "book/edit");
 	}
 	
-	@GetMapping("/edit")
-	public String edit(ModelMap model, @ModelAttribute("book") Book book) {
-		//TODO Add Error handling 
+	@PostMapping("/edit")
+	public String edit(ModelMap model, @ModelAttribute("bookForm") @Valid Book book, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("bookForm", book);
+			return ViewUtil.generateView(model, "Edit Book", "book/edit");
+		}
+		
 		bookService.save(book);
-		return ViewUtil.generateView(model, "Edit Book", "book/edit");
+		return "redirect:index";
 	}
 }
