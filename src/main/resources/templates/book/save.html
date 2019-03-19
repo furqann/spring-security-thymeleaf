@@ -14,7 +14,7 @@
 			<div class="col-3 mb-3">
 				<label for="fullname">Book Title</label> 
 				<input type="text" th:field="*{name}"
-								class="form-control" id="fullname" th:errorclass="is-invalid"
+								class="form-control" th:errorclass="is-invalid"
 								placeholder="Book Title">
 				<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">Test</div>
 			</div>
@@ -23,7 +23,7 @@
 			<div class="col-3 mb-3">
 				<label for="fullname">ISBN</label> 
 				<input type="text" th:field="*{isbn}"
-								class="form-control" id="fullname" th:errorclass="is-invalid"
+								class="form-control" th:errorclass="is-invalid"
 								placeholder="Enter ISBN xxx-xxx-xxx">
 				<div th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" class="invalid-feedback">Test</div>
 			</div>
