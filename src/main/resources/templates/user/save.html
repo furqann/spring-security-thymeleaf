@@ -14,9 +14,9 @@
 						<div class="col mb-3">
 							<label for="fullname">Full name</label> 
 							<input type="text" th:field="*{user.fullName}"
-								class="form-control is-valid" id="fullname"
+								class="form-control" id="fullname" th:errorclass=" is-invalid"
 								placeholder="Full name" required>
-							<div class="valid-feedback">Looks good!</div>
+							<div class="invalid-feedback">Looks good!</div>
 						</div>
 						<div class="col mb-3">
 							<label for="username">Username</label>
