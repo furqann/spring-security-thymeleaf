@@ -1,13 +1,12 @@
 package com.spring.security.thymeleaf.config;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 //@Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
@@ -15,7 +14,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 	       http
            .authorizeRequests()
-               .antMatchers("/**").permitAll();
+           .anyRequest().authenticated()
+           .and()
+           .formLogin().loginPage("/").permitAll();
+//               .antMatchers("/**").permitAll();
 //               .antMatchers("/admin/**").permitAll()
 //               .and()
 //               .authorizeRequests()
@@ -27,6 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //               .and()
 //           .logout()
 //               .permitAll();
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/css/**","/js/**");
 	}
 	
 }
