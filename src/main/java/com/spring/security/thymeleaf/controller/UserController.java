@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,7 @@ public class UserController {
 	@Autowired
 	RoleService roleService;
 
+	@Secured("ROLE_USER")
 	@GetMapping(value = { "/", "/index" })
 	public String index(ModelMap model) {
 

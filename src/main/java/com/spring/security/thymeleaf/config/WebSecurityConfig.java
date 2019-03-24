@@ -15,7 +15,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
 	       http
            .authorizeRequests()
            .anyRequest().authenticated()
@@ -23,18 +22,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
            .formLogin().loginPage("/login").defaultSuccessUrl("/admin/index",true).permitAll()
            .and()
            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
-//               .antMatchers("/**").permitAll();
-//               .antMatchers("/admin/**").permitAll()
-//               .and()
-//               .authorizeRequests()
-//               	.anyRequest().authenticated()
-//               .and()
-//           .formLogin()
-//               .loginPage("/admin/index")
-//               .permitAll()
-//               .and()
-//           .logout()
-//               .permitAll();
 	}
 	
 	@Override
@@ -44,7 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		auth.inMemoryAuthentication().withUser("furqan").password(encoder.encode("123")).roles("ADMIN");
 	}

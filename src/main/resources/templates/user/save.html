@@ -16,7 +16,7 @@
 							<input type="text" th:field="*{user.fullName}"
 								class="form-control" id="fullname" th:errorclass=" is-invalid"
 								placeholder="Full name" required>
-							<div th:if="${#fields.hasErrors('user.fullname')}" th:errors="*{user.fullname}" class="invalid-feedback"></div>
+							<div th:if="${#fields.hasErrors('user.fullName')}" th:errors="*{user.fullName}" class="invalid-feedback"></div>
 						</div>
 						<div class="col mb-3">
 							<label for="username">Username</label>
