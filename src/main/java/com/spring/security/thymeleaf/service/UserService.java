@@ -1,6 +1,7 @@
 package com.spring.security.thymeleaf.service;
 
 import java.util.Collection;
+
 import com.spring.security.thymeleaf.model.*;
 
 public interface UserService {

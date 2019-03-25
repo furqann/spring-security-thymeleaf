@@ -32,7 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		auth.inMemoryAuthentication().withUser("furqan").password(encoder.encode("123")).roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("admin").password(encoder.encode("123")).roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("user").password(encoder.encode("123")).roles("USER");
 	}
 	
 }

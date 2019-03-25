@@ -32,7 +32,7 @@ public class UserController {
 	@Autowired
 	RoleService roleService;
 
-	@Secured("ROLE_USER")
+	@Secured("ROLE_ADMIN")
 	@GetMapping(value = { "/", "/index" })
 	public String index(ModelMap model) {
 
