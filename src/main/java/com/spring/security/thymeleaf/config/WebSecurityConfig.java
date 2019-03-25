@@ -21,7 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
            .and()
            .formLogin().loginPage("/login").defaultSuccessUrl("/admin/index",true).permitAll()
            .and()
-           .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
+           .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
+           .and().exceptionHandling().accessDeniedPage("/403");
 	}
 	
 	@Override
