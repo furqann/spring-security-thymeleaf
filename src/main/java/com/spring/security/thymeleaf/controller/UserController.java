@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -32,10 +33,9 @@ public class UserController {
 	@Autowired
 	RoleService roleService;
 
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_USER")
 	@GetMapping(value = { "/", "/index" })
-	public String index(ModelMap model) {
-
+	public String index(ModelMap model, Authentication auth) {
 		Collection<User> users = userService.findAll();
 		model.addAttribute("users", users);
 
@@ -66,6 +66,7 @@ public class UserController {
 		return ViewUtil.generateView(model, "User Details", "user/details");
 	}
 
+	@Secured("ROLE_EDIT_USER")
 	@GetMapping("/edit/{id}")
 	public String update(ModelMap model, @PathVariable("id") int id) {
 		
