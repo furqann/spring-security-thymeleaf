@@ -8,3 +8,7 @@ This project contains code related to spring boot web application. It contains t
 1. Your favourite IDE ([Spring Tool Suite](https://spring.io/tools) is recommended)
 2. [Lombok](https://projectlombok.org/)
 3. MySQL 5.6.17
+## Technologies
+1. Spring boot 2
+2. Spring Data Jpa
+3. Bootstrap 
