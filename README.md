@@ -12,3 +12,4 @@ This project contains code related to spring boot web application. It contains t
 1. Spring boot 2
 2. Spring Data Jpa
 3. Bootstrap 
+4. Thymeleaf
