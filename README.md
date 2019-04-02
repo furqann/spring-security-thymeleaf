@@ -8,7 +8,7 @@ This project contains code related to spring boot web application. Project conta
 
 ## System Requirements
 1. Your favourite IDE ([Spring Tool Suite](https://spring.io/tools) is recommended)
-2. [Lombok](https://projectlombok.org/)
+2. [Lombok](https://projectlombok.org/) Must be configured with IDE.
 3. MySQL 5.6.17
 
 ## Technologies
