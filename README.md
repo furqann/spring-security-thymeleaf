@@ -13,7 +13,7 @@ Project contains code related to spring boot web application. Project contains t
 3. MySQL 5.6.17
 
 ## Technologies
-1. Spring boot 2
+1. Spring boot v.2
 2. Spring Data Jpa
 3. Bootstrap 
 4. Thymeleaf
