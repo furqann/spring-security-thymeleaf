@@ -2,7 +2,7 @@
 ## Spring Security Thymeleaf
 Project contains code related to spring boot web application. Project contains the implementation of spring boot secuirty and latest template engine known as Thymeleaf.
 
-## Prerequisite
+## Prerequisites
 1. Java 8
 2. HTML/CSS
 3. JavaScript
